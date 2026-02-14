@@ -14,8 +14,8 @@ RUN npm install --production
 COPY index.js info ./
 RUN chmod +x /app/info
 
-ENV Apikey=""
-ENV Token=""
+ENV APIKEY=""
+ENV TOKEN=""
 
 EXPOSE 3000
 
