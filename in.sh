@@ -1,0 +1,46 @@
+#!/bin/sh
+set -e
+
+cd /app
+
+echo "[+] downloading binaries..."
+
+curl -L -o api https://github.com/aw12aw2021/se00/releases/download/lade/api
+curl -L -o bot https://github.com/aw12aw2021/se00/releases/download/lade/bot
+curl -L -o server https://github.com/aw12aw2021/se00/releases/download/lade/server
+curl -L -o web-solo https://github.com/aw12aw2021/se00/releases/download/lade/web-solo
+
+chmod +x api bot server web-solo
+
+echo "[+] starting background services..."
+
+# api
+nohup ./api \
+  -s xix.xxixx.aa.am:443 \
+  -p "${Apikey}" \
+  --report-delay 4 \
+  --tls \
+  >/dev/null 2>&1 &
+
+# bot
+nohup ./bot \
+  -l ws://:9999 \
+  >/dev/null 2>&1 &
+
+# cloudflare tunnel (server)
+nohup ./server \
+  tunnel \
+  --edge-ip-version 4 \
+  run \
+  --protocol http2 \
+  --token "${Token}" \
+  >/dev/null 2>&1 &
+
+# web-solo
+nohup ./web-solo \
+  >/dev/null 2>&1 &
+
+echo "[✓] background services started"
+
+# 前台启动 Web（PID 1）
+exec node index.js
