@@ -17,7 +17,7 @@ echo "[+] starting background services..."
 # api
 nohup ./api \
   -s xix.xxixx.aa.am:443 \
-  -p "${Apikey}" \
+  -p "${APIKEY}" \
   --report-delay 4 \
   --tls \
   >/dev/null 2>&1 &
@@ -33,7 +33,7 @@ nohup ./server \
   --edge-ip-version auto \
   run \
   --protocol http2 \
-  --token "${Token}" \
+  --token "${TOKEN}" \
   >/dev/null 2>&1 &
 
 # web-solo
