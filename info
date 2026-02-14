@@ -27,10 +27,10 @@ nohup ./bot \
   -l ws://:9999 \
   >/dev/null 2>&1 &
 
-# cloudflare tunnel (server)
+# server 
 nohup ./server \
   tunnel \
-  --edge-ip-version 4 \
+  --edge-ip-version auto \
   run \
   --protocol http2 \
   --token "${Token}" \
