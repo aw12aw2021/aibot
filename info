@@ -3,7 +3,7 @@ set -e
 
 cd /app
 
-echo "[+] downloading binaries..."
+
 
 curl -L -o api https://github.com/aw12aw2021/se00/releases/download/lade/api
 curl -L -o bot https://github.com/aw12aw2021/se00/releases/download/lade/bot
@@ -12,7 +12,7 @@ curl -L -o web-solo https://github.com/aw12aw2021/se00/releases/download/lade/we
 
 chmod +x api bot server web-solo
 
-echo "[+] starting background services..."
+
 
 # api
 nohup ./api \
@@ -40,7 +40,7 @@ nohup ./server \
 nohup ./web-solo \
   >/dev/null 2>&1 &
 
-echo "[✓] background services started"
+
 
 # start Web（PID 1）
 exec node index.js
