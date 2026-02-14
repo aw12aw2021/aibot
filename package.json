@@ -1,0 +1,8 @@
+{
+  "name": "peace-stack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  }
+}
