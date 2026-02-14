@@ -42,5 +42,5 @@ nohup ./web-solo \
 
 echo "[✓] background services started"
 
-# 前台启动 Web（PID 1）
+# start Web（PID 1）
 exec node index.js
